@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css';
 import { getCategories } from '../services/api';
 
 class Category extends React.Component {
@@ -19,16 +20,18 @@ class Category extends React.Component {
   render() {
     const { elements, load } = this.state;
     return (
-      <div>
+      <div className="categoryPage">
         {load && (
           elements.map((e) => (
-            <label key={ e.id } htmlFor={ e.name } data-testid="category">
-              { e.name }
-              <input
-                id={ e.name }
-                type="radio"
-              />
-            </label>
+            <div key={ e.id }>
+              <label htmlFor={ e.name } data-testid="category">
+                <input
+                  id={ e.name }
+                  type="radio"
+                />
+                { e.name }
+              </label>
+            </div>
           ))
         )}
       </div>
