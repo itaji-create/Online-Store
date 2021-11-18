@@ -349,7 +349,7 @@ Se você não seguir a ordem de prioridades terá que lidar com mais **conflitos
 
 **Observações técnicas**
 
-Você deve (**OBRIGATORIAMENTE**) utilizar o arquivo `src/services/api.js` para acessar a API do Mercado Livre em sua aplicação.  Utilize (**OBRIGATORIAMENTE**) o módulo **[Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)** para realizar as requisições. Sinta-se livre para criar novas funções, porém já deixamos 2 funções a serem implementadas para isso:
+Você deve (**OBRIGATORIAMENTE**) utilizar o arquivo `src/services/api.js` para acessar a API do Mercado Livre em sua aplicação.  Utilize (**OBRIGATORIAMENTE**) o módulo **[Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)** para realizar as requisições. Sinta-se livre para criar novas funções, poré já deixamos 2 funções a serem implementadas para isso:
 
 ```javascript
 export async function getCategories() {
