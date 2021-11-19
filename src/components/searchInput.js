@@ -58,13 +58,14 @@ class SearchInput extends React.Component {
           </div>
         )}
         <section>
-          <header>
+          <div className="searchSection">
             <h1
               data-testid="home-initial-message"
             >
               Digite algum termo de pesquisa ou escolha uma categoria.
             </h1>
             <input
+              className="textInput"
               data-testid="query-input"
               type="text"
               placeholder="Pesquise produto"
@@ -72,14 +73,21 @@ class SearchInput extends React.Component {
               value={ inputText }
             />
             <button
+              className="buttonInput"
               type="button"
               data-testid="query-button"
               onClick={ this.requestProducts }
             >
               Pesquisar
             </button>
-            <Link data-testid="shopping-cart-button" to="/carrinho">Carrinho</Link>
-          </header>
+            <Link
+              style={ { backgroundColor: 'red' } }
+              data-testid="shopping-cart-button"
+              to="/carrinho"
+            >
+              Carrinho
+            </Link>
+          </div>
           {showProducts && (
             products.length > 0 ? (
               <div className="productsPage">
