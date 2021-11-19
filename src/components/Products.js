@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Products extends React.Component {
   render() {
-    const { title, image, price } = this.props;
+    const { title, image, price, id } = this.props;
     return (
       <div className="product" data-testid="product">
-        <h4>{ title }</h4>
+        <Link
+          data-testid="product-detail-link"
+          to={ `/product-detail/${id}` }
+        >
+          { title }
+        </Link>
         <img src={ image } alt={ title } />
         <p>
           R$:
@@ -18,6 +24,7 @@ class Products extends React.Component {
 }
 
 Products.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

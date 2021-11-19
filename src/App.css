@@ -71,6 +71,9 @@ header input {
 }
 
 .productsPage .product {
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px black;
   margin: 5px;
   text-align: center;
   width: 200px;
