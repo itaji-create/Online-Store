@@ -1,15 +1,16 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-import { Circles } from 'react-loading-icons';
 import { getProductsById } from '../services/api';
 import Products from '../components/Products';
 
 class ProductDetail extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const { match: { params } } = props;
     this.state = {
       productInfo: [],
       load: false,
+      id: params.id,
     };
     this.productDetails = this.productDetails.bind(this);
   }
@@ -18,20 +19,14 @@ class ProductDetail extends React.Component {
     this.productDetails();
   }
 
-  async productDetails() {
-    const {
-      match: {
-        info: {
-          id,
-        },
-      } } = this.props;
-    this.setState({
-      load: true }, async () => {
-      const produto = await getProductsById(id);
+  productDetails() {
+    const { id } = this.state;
+    getProductsById(id).then((data) => {
       this.setState({
-        productInfo: produto,
-        load: false,
+        productInfo: data,
+        load: true,
       });
+      console.log(this.state);
     });
   }
 
@@ -41,17 +36,19 @@ class ProductDetail extends React.Component {
         title,
         thumbnail,
         price,
+        id,
       },
       load,
     } = this.state;
     return (
       <div data-testid="product-detail-name">
-        { load ? <Circles /> : (
-          <div>
-            <Products title={ title } image={ thumbnail } price={ price } />
-          </div>
-        )}
-
+        {load
+          && <Products
+            id={ id }
+            title={ title }
+            image={ thumbnail }
+            price={ price }
+          />}
       </div>
     );
   }
@@ -59,9 +56,7 @@ class ProductDetail extends React.Component {
 
 ProductDetail.propTypes = {
   match: Proptypes.shape({
-    info: Proptypes.shape({
-      id: Proptypes.string.isRequired,
-    }),
+    params: Proptypes.string.isRequired,
   }).isRequired,
 };
 
