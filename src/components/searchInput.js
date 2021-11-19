@@ -36,14 +36,26 @@ class SearchInput extends React.Component {
     const { inputText, category } = this.state;
     getProductsFromCategoryAndQuery(category, inputText)
       .then((data) => {
-        this.setState({ products: data.results });
+        this.setState({ products: data.results, showProducts: true });
       });
   }
 
   render() {
-    const { load, categories, inputText, products } = this.state;
+    const { load, categories, inputText, products, showProducts } = this.state;
     return (
       <div className="page">
+        {load && (
+          <div className="categoryPage">
+            {categories.map((e) => (
+              <Category
+                key={ e.id }
+                change={ this.handleChange }
+                id={ e.id }
+                name={ e.name }
+              />
+            ))}
+          </div>
+        )}
         <section>
           <header>
             <h1
@@ -67,31 +79,24 @@ class SearchInput extends React.Component {
             </button>
             <Link data-testid="shopping-cart-button" to="/carrinho">Carrinho</Link>
           </header>
-          {products.length > 0 && (
-            <div className="productsPage">
-              {products.map((e) => (
-                <Products
-                  key={ e.id }
-                  title={ e.title }
-                  image={ e.thumbnail }
-                  price={ e.price }
-                />
-              ))}
-            </div>
+          {showProducts && (
+            products.length > 0 ? (
+              <div className="productsPage">
+                {products.map((e) => (
+                  <Products
+                    key={ e.id }
+                    title={ e.title }
+                    image={ e.thumbnail }
+                    price={ e.price }
+                  />
+                ))}
+              </div>
+            )
+              : (
+                <p>Nenhum produto foi encontrado</p>
+              )
           )}
         </section>
-        {load && (
-          <div className="categoryPage">
-            {categories.map((e) => (
-              <Category
-                key={ e.id }
-                change={ this.handleChange }
-                id={ e.id }
-                name={ e.name }
-              />
-            ))}
-          </div>
-        )}
       </div>
     );
   }

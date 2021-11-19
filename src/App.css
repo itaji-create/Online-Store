@@ -53,8 +53,8 @@ header {
   border: solid black;
   height: 200px;
   margin: 10px;
+  min-width: 80%;
   text-align: center;
-  width: 80%;
 }
 
 header input {
@@ -67,7 +67,7 @@ header input {
   display: flex;
   flex-wrap: wrap;
   margin: 10px;
-  width: 80%;
+  min-width: 80%;
 }
 
 .productsPage .product {
