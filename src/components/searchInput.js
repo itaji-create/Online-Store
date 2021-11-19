@@ -89,6 +89,7 @@ class SearchInput extends React.Component {
                     title={ e.title }
                     image={ e.thumbnail }
                     price={ e.price }
+                    id={ e.id }
                   />
                 ))}
               </div>
