@@ -40,3 +40,49 @@
     transform: rotate(360deg);
   }
 }
+
+.page {
+  display: flex;
+}
+
+.page section {
+  display: block;
+}
+
+header {
+  border: solid black;
+  height: 200px;
+  margin: 10px;
+  min-width: 80%;
+  text-align: center;
+}
+
+header input {
+  border-radius: 5px;
+  width: 500px;
+}
+
+.productsPage {
+  border: solid black;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  min-width: 80%;
+}
+
+.productsPage .product {
+  margin: 5px;
+  text-align: center;
+  width: 200px;
+}
+
+.productsPage .product img {
+  max-width: 150px;
+}
+
+.categoryPage {
+  border: solid black;
+  margin: 10px;
+  min-width: 250px;
+  padding: 10px;
+}
