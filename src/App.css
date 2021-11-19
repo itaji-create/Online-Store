@@ -53,36 +53,36 @@
   display: block;
 }
 
- header {
+header {
   background-color: red;
   height: 180px;
   min-width: 80%;
   text-align: center;
 }
 
-  .searchSection {
-    background-color: red;
-    bottom: 150px;
-    position: relative;
-  }
+.searchSection {
+  background-color: red;
+  bottom: 150px;
+  position: relative;
+}
 
- .searchSection  h1 {
+.searchSection h1 {
   background-color: red;
   color: white;
   font-size: 30px;
   margin: auto;
- }
+}
 
  .textInput {
-   border: solid red;
-   border-radius: 10px;
-   margin: auto;
-   margin-right: 5px;
-   padding: 20px;
-   width: 80%;
- }
+  border: solid red;
+  border-radius: 10px;
+  margin: auto;
+  margin-right: 5px;
+  padding: 20px;
+  width: 80%;
+}
 
- .buttonInput {
+.buttonInput {
   background-color: lightgray;
   border: solid lightgray;
   border-radius: 10px;
@@ -90,9 +90,9 @@
   padding: 15px;
  }
 
- .buttonInput:hover {
+.buttonInput:hover {
    opacity: 1;
- }
+}
 
 .productsPage {
   background-color: whitesmoke;
