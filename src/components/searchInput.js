@@ -27,6 +27,7 @@ class SearchInput extends React.Component {
   handleChange({ target: { value, type, id } }) {
     if (type === 'radio') {
       this.setState({ category: id });
+      this.requestProducts();
     } else {
       this.setState({ inputText: value });
     }

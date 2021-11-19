@@ -8,7 +8,10 @@ class Products extends React.Component {
       <div className="product" data-testid="product">
         <h4>{ title }</h4>
         <img src={ image } alt={ title } />
-        <p>{ price }</p>
+        <p>
+          R$:
+          { price }
+        </p>
       </div>
     );
   }
