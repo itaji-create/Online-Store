@@ -73,7 +73,7 @@ header {
   margin: auto;
 }
 
- .textInput {
+.textInput {
   border: solid red;
   border-radius: 10px;
   margin: auto;
@@ -88,10 +88,10 @@ header {
   border-radius: 10px;
   opacity: 0.8;
   padding: 15px;
- }
+}
 
 .buttonInput:hover {
-   opacity: 1;
+  opacity: 1;
 }
 
 .productsPage {
