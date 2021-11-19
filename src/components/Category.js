@@ -1,42 +1,30 @@
 import React from 'react';
 import '../App.css';
-import { getCategories } from '../services/api';
+import PropTypes from 'prop-types';
 
 class Category extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      elements: [],
-      load: false,
-    };
-  }
-
-  componentDidMount() {
-    getCategories().then((data) => {
-      this.setState({ elements: data, load: true });
-    });
-  }
-
   render() {
-    const { elements, load } = this.state;
+    const { name, change, id } = this.props;
     return (
-      <div className="categoryPage">
-        {load && (
-          elements.map((e) => (
-            <div key={ e.id }>
-              <label htmlFor={ e.name } data-testid="category">
-                <input
-                  id={ e.name }
-                  type="radio"
-                />
-                { e.name }
-              </label>
-            </div>
-          ))
-        )}
+      <div>
+        <label htmlFor={ id } data-testid="category">
+          <input
+            id={ id }
+            type="radio"
+            name="selected"
+            onChange={ change }
+          />
+          { name }
+        </label>
       </div>
     );
   }
 }
+
+Category.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  change: PropTypes.func.isRequired,
+};
 
 export default Category;
