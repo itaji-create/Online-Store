@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Proptypes from 'prop-types';
 import { getProductsById } from '../services/api';
 import Products from '../components/Products';
@@ -13,11 +14,25 @@ class ProductDetail extends React.Component {
       id: params.id,
     };
     this.productDetails = this.productDetails.bind(this);
+    this.saveCartItems = this.saveCartItems.bind(this);
   }
 
   componentDidMount() {
     this.productDetails();
   }
+
+  saveCartItems = () => {
+    const { productInfo: { title, thumbnail, price }, id } = this.state;
+    const result = { title, thumbnail, price, id };
+    if (localStorage.getItem('cartItems')) {
+      const readLocalProducts = JSON.parse(localStorage.getItem('cartItems'));
+      localStorage.setItem('cartItems', JSON.stringify([...readLocalProducts, result]));
+    } else {
+      localStorage.setItem('cartItems', JSON.stringify([]));
+      const readLocalProducts = JSON.parse(localStorage.getItem('cartItems'));
+      localStorage.setItem('cartItems', JSON.stringify([...readLocalProducts, result]));
+    }
+  };
 
   productDetails() {
     const { id } = this.state;
@@ -26,7 +41,6 @@ class ProductDetail extends React.Component {
         productInfo: data,
         load: true,
       });
-      console.log(this.state);
     });
   }
 
@@ -42,12 +56,14 @@ class ProductDetail extends React.Component {
     } = this.state;
     return (
       <div data-testid="product-detail-name">
+        <Link data-testid="shopping-cart-button" to="/carrinho">Carrinho</Link>
         {load
           && <Products
             id={ id }
             title={ title }
             image={ thumbnail }
             price={ price }
+            handleClick={ this.saveCartItems }
           />}
       </div>
     );
@@ -56,7 +72,9 @@ class ProductDetail extends React.Component {
 
 ProductDetail.propTypes = {
   match: Proptypes.shape({
-    params: Proptypes.string.isRequired,
+    params: Proptypes.shape({
+      id: Proptypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
 };
 
