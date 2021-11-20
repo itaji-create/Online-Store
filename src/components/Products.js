@@ -31,7 +31,7 @@ Products.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  obj: PropTypes.PropTypes.objectOf(PropTypes.object ()).isRequired,
+  obj: PropTypes.PropTypes.objectOf(PropTypes.object()).isRequired,
 };
 
 export default Products;

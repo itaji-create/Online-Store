@@ -71,7 +71,7 @@ class Carrinho extends React.Component {
 
 Carrinho.propTypes = {
   location: PropTypes.shape({
-    ItensCart: PropTypes.objectOf(PropTypes.object ()),
+    ItensCart: PropTypes.objectOf(PropTypes.object()),
   }).isRequired,
 };
 
