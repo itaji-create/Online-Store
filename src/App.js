@@ -7,6 +7,7 @@ import ProductDetail from './pages/ProductDetail';
 function App() {
   return (
     <BrowserRouter>
+      <header />
       <Switch>
         <Route exact path="/" component={ SearchInput } />
         <Route exact path="/carrinho" component={ Carrinho } />
