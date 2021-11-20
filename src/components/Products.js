@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class Products extends React.Component {
   render() {
-    const { title, image, price, id } = this.props;
+    const { title, image, price, id, handleClick } = this.props;
     return (
       <div className="product" data-testid="product">
         <Link
@@ -18,6 +18,13 @@ class Products extends React.Component {
           R$:
           { price }
         </p>
+        <button
+          type="button"
+          data-testid="product-detail-add-to-cart"
+          onClick={ handleClick }
+        >
+          Adicionar ao carrinho
+        </button>
       </div>
     );
   }
@@ -28,6 +35,7 @@ Products.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default Products;
