@@ -5,6 +5,7 @@ class Carrinho extends React.Component {
     super();
     this.state = {
       carrinho: JSON.parse(localStorage.getItem('cartItems')),
+      total: 0,
     };
     this.deleteCard = this.deleteCard.bind(this);
     this.changeQtd = this.changeQtd.bind(this);
@@ -13,7 +14,7 @@ class Carrinho extends React.Component {
   deleteCard({ target }) {
     const { carrinho } = this.state;
     const name = target.parentNode.parentNode.firstChild.innerText;
-    let i = carrinho.findIndex((card) => card.id === name);
+    const i = carrinho.findIndex((card) => card.id === name);
     carrinho.splice(i, 1);
     this.setState({ carrinho });
     localStorage.setItem('cartItems', JSON.stringify([...carrinho]));
@@ -23,8 +24,8 @@ class Carrinho extends React.Component {
     const operator = target.id;
     const { carrinho } = this.state;
     const name = target.parentNode.parentNode.firstChild.innerText;
-    let i = carrinho.findIndex((e) => e.id === name);
-
+    const i = carrinho.findIndex((e) => e.id === name);
+    console.log(this.state);
     if (operator === '+') {
       carrinho[i].qtd += 1;
       this.setState({ carrinho });
@@ -37,7 +38,7 @@ class Carrinho extends React.Component {
   }
 
   render() {
-    const { carrinho } = this.state;
+    const { carrinho, total } = this.state;
     return (
       <div>
         {carrinho !== null ? (
@@ -50,9 +51,15 @@ class Carrinho extends React.Component {
                 {item.title}
               </h3>
               <img src={ item.thumbnail } alt={ item.title } />
-              <p><i>R$: </i>{ item.price }</p>
+              <p>
+                <i>R$: </i>
+                { item.price }
+              </p>
               <div>
-                <p data-testid="shopping-cart-product-quantity"><i>Qtd: </i>{ item.qtd }</p>
+                <p data-testid="shopping-cart-product-quantity">
+                  <i>Qtd: </i>
+                  { item.qtd }
+                </p>
                 <button
                   type="button"
                   id="+"
@@ -77,7 +84,10 @@ class Carrinho extends React.Component {
           : <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>}
         <div>
           <h2>Resumo do pedido</h2>
-          <h3>Total</h3>
+          <h3>
+            <i>Total: </i>
+            { total }
+          </h3>
           <button type="button">Continuar</button>
         </div>
       </div>
