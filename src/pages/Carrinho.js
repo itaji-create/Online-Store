@@ -5,6 +5,8 @@ class Carrinho extends React.Component {
   constructor() {
     super();
     this.state = {
+      
+// requisito-8
       products: [],
       minValue: 1,
     };
@@ -65,6 +67,33 @@ class Carrinho extends React.Component {
         )
         : (
           <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>)
+//fim requisito 8
+          // inicio requisito 10
+      carrinho: JSON.parse(localStorage.getItem('cartItems')),
+    };
+  }
+
+  render() {
+    const { carrinho } = this.state;
+    return (
+      <div>
+        {carrinho !== null ? (
+          carrinho.map((item) => (
+            <div key={ item.id }>
+              <p>{ item.id }</p>
+              <h3
+                data-testid="shopping-cart-product-name"
+              >
+                {item.title}
+              </h3>
+              <img src={ item.thumbnail } alt={ item.title } />
+              <p data-testid="shopping-cart-product-quantity">1</p>
+            </div>
+          ))
+        )
+          : <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>}
+      </div>
+//fim requisito 10
     );
   }
 }

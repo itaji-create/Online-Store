@@ -1,3 +1,7 @@
+* {
+  background-color: white;
+}
+
 .App {
   text-align: center;
 }
@@ -50,28 +54,63 @@
 }
 
 header {
-  border: solid black;
-  height: 200px;
-  margin: 10px;
+  background-color: red;
+  height: 180px;
   min-width: 80%;
   text-align: center;
 }
 
-header input {
-  border-radius: 5px;
-  width: 500px;
+.searchSection {
+  background-color: red;
+  bottom: 150px;
+  position: relative;
+}
+
+.searchSection h1 {
+  background-color: red;
+  color: white;
+  font-size: 30px;
+  margin: auto;
+}
+
+.textInput {
+  border: solid red;
+  border-radius: 10px;
+  margin: auto;
+  margin-right: 5px;
+  padding: 20px;
+  width: 80%;
+}
+
+.buttonInput {
+  background-color: lightgray;
+  border: solid lightgray;
+  border-radius: 10px;
+  opacity: 0.8;
+  padding: 15px;
+}
+
+.buttonInput:hover {
+  opacity: 1;
 }
 
 .productsPage {
-  border: solid black;
+  background-color: whitesmoke;
+  border: solid lightgray;
+  border-radius: 5px;
+  bottom: 50px;
   display: flex;
   flex-wrap: wrap;
   margin: 10px;
   min-width: 80%;
+  position: relative;
 }
 
 .productsPage .product {
-  margin: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px black;
+  margin: 21px;
   text-align: center;
   width: 200px;
 }
@@ -81,8 +120,7 @@ header input {
 }
 
 .categoryPage {
-  border: solid black;
-  margin: 10px;
+  background-color: whitesmoke;
   min-width: 250px;
   padding: 10px;
 }

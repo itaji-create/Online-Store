@@ -6,8 +6,12 @@ class Category extends React.Component {
   render() {
     const { name, change, id } = this.props;
     return (
-      <div>
-        <label htmlFor={ id } data-testid="category">
+      <div style={ { backgroundColor: 'whitesmoke' } }>
+        <label
+          style={ { backgroundColor: 'whitesmoke' } }
+          htmlFor={ id }
+          data-testid="category"
+        >
           <input
             id={ id }
             type="radio"
