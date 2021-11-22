@@ -93,6 +93,7 @@ class SearchInput extends React.Component {
               <div className="productsPage">
                 {products.map((e) => (
                   <Products
+                    obj={ e }
                     key={ e.id }
                     title={ e.title }
                     image={ e.thumbnail }
