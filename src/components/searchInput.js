@@ -16,6 +16,7 @@ class SearchInput extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.requestProducts = this.requestProducts.bind(this);
+    this.saveCartItems = this.saveCartItems.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +40,20 @@ class SearchInput extends React.Component {
       .then((data) => {
         this.setState({ products: data.results, showProducts: true });
       });
+  }
+
+  saveCartItems({ target: { id } }) {
+    const { products } = this.state;
+    const result = products.find((e) => e.id === id);
+    const localKeys = JSON.parse(localStorage.getItem('cartItems'));
+    if (localKeys) {
+      if (localKeys.every((e) => e.id !== id)) {
+        localStorage.setItem('cartItems', JSON.stringify([...localKeys, result]));
+      }
+    } else {
+      localStorage.setItem('cartItems', JSON.stringify([]));
+      localStorage.setItem('cartItems', JSON.stringify([...localKeys, result]));
+    }
   }
 
   render() {
@@ -99,6 +114,7 @@ class SearchInput extends React.Component {
                     image={ e.thumbnail }
                     price={ e.price }
                     id={ e.id }
+                    handleClick={ this.saveCartItems }
                   />
                 ))}
               </div>
